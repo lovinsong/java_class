@@ -79,7 +79,7 @@ public class A05_print {
 		System.out.printf(".10\t:%.10f\n", 123.321);
 		System.out.printf(".20\t: %.20f\n", 123.321);
 		System.out.printf(".255\t: %.255f\n", 123.321);
-
+ 
 	}
 
 }
