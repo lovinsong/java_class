@@ -79,11 +79,11 @@
 
  ㅁ - ㅁ - ㅁ - ㅁ - ㅁ main(master)
                  \ 			
-  	   ㅁ - ㅁ BranchA
+  				   ㅁ - ㅁ BranchA
 
 	=> ㅁ - ㅁ - ㅁ - ㅁ - ㅁ main(master)
                 		    \ 			
-	  		     ㅁ - ㅁ BranchA
+	  		    			 ㅁ - ㅁ BranchA
   
   
   
