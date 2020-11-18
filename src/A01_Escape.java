@@ -34,6 +34,7 @@ public class A01_Escape {
 			System.out.println("아침을 '든든'  하게 먹어둬라");
 			System.out.println("");
 			
+			
 		}
 	
 }
