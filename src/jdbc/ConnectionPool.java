@@ -72,7 +72,7 @@ public class ConnectionPool {
 		System.out.println("conn3 addr : " + conn3);
 		
 		// close를 하면 Connection을 끊는 대신 사용중이지 않은 상태로 변경한다
-		conn1.close();
+//		conn1.close();
 		conn2.close();
 		conn3.close();
 		
