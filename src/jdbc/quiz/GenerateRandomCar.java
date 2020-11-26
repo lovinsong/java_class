@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -50,11 +51,12 @@ public class GenerateRandomCar {
 
 			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1", "hr", "1234");
 
-			String sql = "INSERT INTO car VALUES (?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO cars VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 			for (int i = 0; i < 100; ++i) {
 
 				Random ran = new Random();
+				Calendar korea_time = Calendar.getInstance();
 
 				String[] Word = new String[] { "가", "나", "다", "라", "마", "거", "너", "더", "러", "머", "버", "서", "어", "저",
 						"고", "노", "도", "로", "모", "보", "소", "오", "조", "구", "누", "두", "루", "무", "부", "수", "우", "주", "아",
@@ -65,6 +67,7 @@ public class GenerateRandomCar {
 				String mid_Word = wordList.get(0);
 				int front_Num = ran.nextInt(99) + 1;
 				int back_Num = ran.nextInt(9899) + 100;
+				
 
 				String car_Use;
 				if (mid_Word.equals("아") || mid_Word.equals("바") || mid_Word.equals("사") || mid_Word.equals("자")) {
@@ -83,7 +86,29 @@ public class GenerateRandomCar {
 					car_Type = "화물차";
 				} else
 					car_Type = "특수 차량";
+				
+				String check_num;
+				if (back_Num % 10 == 1 || back_Num % 10 == 6) {
+					check_num = "월요일 출입 제한";
+				} else if (back_Num % 10 == 2 || back_Num % 10 == 7) {
+					check_num = "화요일 출입 제한";
+				} else if (back_Num % 10 == 3 || back_Num % 10 == 8) {
+					check_num = "수요일 출입 제한";
+				} else if (back_Num % 10 == 4 || back_Num % 10 == 9) {
+					check_num = "목요일 출입 제한";
+				} else {
+					check_num = "금요일 출입 제한";
+				}
 
+				String today;
+				int korea_today = korea_time.get(Calendar.DATE);
+				if((int)(korea_today % 10) == (back_Num - (int)Math.floor(back_Num/10)*10)) {
+					today = "출입 제한";
+				}else {
+					today = "출입 가능";
+				}
+				
+				
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 
 				pstmt.setInt(1, front_Num);
@@ -91,6 +116,10 @@ public class GenerateRandomCar {
 				pstmt.setInt(3, back_Num);
 				pstmt.setString(4, car_Use);
 				pstmt.setString(5, car_Type);
+				pstmt.setString(6, check_num);
+				pstmt.setString(7, today);
+				
+				
 
 				int row = pstmt.executeUpdate(); // 추가 해주는 구문
 			}

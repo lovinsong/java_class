@@ -28,7 +28,6 @@ public class GenerateRandomCarSol {
 	// 	번호를 랜덤 생성한 뒤에 번호에 따라 결정되는 것들 적용하여
 	// 	차량객체를 생성한 후 DB에 알맞게 저장해보세요
 	
-	// 	※ JAVA코드와 DB스크린샷을 보여주시면 됩니다
 	public static void main(String[] args) {
 		
 		try {
@@ -40,14 +39,15 @@ public class GenerateRandomCarSol {
 			);
 			PreparedStatement pstmt = 
 					conn.prepareStatement("INSERT INTO random_car_table"
-							+ " VALUES(?, ?, ?)");
+							+ " VALUES(?, ?, ?, ?)");
 			
 			// Batch : 일괄처리 
 			for (int i = 0; i < 100; ++i) {
 				Car car = Car.ran();
 				pstmt.setString(1, car.getPlateNumber());
 				pstmt.setString(2, car.getCtype());
-				pstmt.setString(3, car.getUsage());				
+				pstmt.setString(3, car.getUsage());
+				pstmt.setInt(4, car.getBacknum());
 				pstmt.addBatch();
 				// int row = pstmt.executeUpdate();
 				// System.out.println(row + "행이 업데이트 되었습니다.");
