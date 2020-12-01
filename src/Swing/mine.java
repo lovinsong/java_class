@@ -38,7 +38,6 @@ public class mine extends JFrame{
 				BufferedImage source = ImageIO
 						.read(new File("F:\\자바SW개발자 양성과정 10월 송만기\\git\\java_class\\assets\\mine.png"));
 
-
 				int btn_width = source.getWidth() / image_cols;
 				int btn_height = source.getHeight() / image_rows;
 
@@ -51,7 +50,7 @@ public class mine extends JFrame{
 						// getScaledInstance로 이미지 크기 조절이 가능하다
 						btn.setIcon(
 								new ImageIcon(cropped_image.getScaledInstance(32, 32, Image.SCALE_SMOOTH)));
-
+						
 						btn.setLocation(col * 32, row * 32);
 						btn.setSize(32, 32);
 						

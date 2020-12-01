@@ -38,15 +38,15 @@ public class S02_JButton extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// 이벤트가 발생했을 때 해당 이벤트의 정보를 넘겨받게 된다
-//				System.out.println("버튼이 눌림");
+				System.out.println("버튼이 눌림");
 				
 //				System.out.println("버튼이 눌린놈 : " + e.getSource());
-//				System.out.println("gACommand : " + e.getActionCommand());
+				System.out.println("gACommand : " + e.getActionCommand());
 				
 				JButton clicked_btn = (JButton)e.getSource();
 				
 				
-//				System.out.println("버튼의 이름 : " + clicked_btn.getText());
+				System.out.println("버튼의 이름 : " + clicked_btn.getText());
 				System.out.println(clicked_btn.getText());
 			}
 		}; 
