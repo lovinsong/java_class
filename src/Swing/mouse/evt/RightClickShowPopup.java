@@ -14,9 +14,9 @@ public class RightClickShowPopup extends MouseAdapter {
 	public RightClickShowPopup(JPopupMenu popup, Component comp) {
 		this.popup = popup;
 		this.comp = comp;
-
 	}
 
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if (e.getButton() == MouseEvent.BUTTON3) {

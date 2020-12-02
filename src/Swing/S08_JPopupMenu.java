@@ -21,7 +21,9 @@ public class S08_JPopupMenu {
 		JMenuItem paste = new JMenuItem("붙여넣기");
 
 		popup.add(copy);
+		popup.addSeparator();
 		popup.add(cut);
+		popup.addSeparator();
 		popup.add(paste);
 		
 		copy.addActionListener(new ActionListener() {

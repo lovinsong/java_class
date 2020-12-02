@@ -1,6 +1,8 @@
 package quiz;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -24,6 +26,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
+import Swing.comp.Dice;
 import Swing.mouse.evt.RightClickShowPopup;
 
 public class S08_PopupMenuQuiz extends JFrame {
@@ -33,50 +36,74 @@ public class S08_PopupMenuQuiz extends JFrame {
 
 	// 어느곳에 있는 REROLL을 누르던 간에 주사위가 변해야 합니다.
 
-	JMenu menu = new JMenu("주사위");
 	JMenuBar bar = new JMenuBar();
+	JMenu menu = new JMenu("주사위");
 	JPopupMenu popup = new JPopupMenu();
 	JMenuItem popup_item_reroll = new JMenuItem("reroll");
-	JPanel dice_panel = new JPanel(new GridLayout(1, 5, 5, 5));
-	
+
 	public S08_PopupMenuQuiz() {
+		JPanel dice_panel = new JPanel(new GridLayout(1, 5, 5, 5));
+		ArrayList<Dice> dices = new ArrayList<>(5);
 
 		for (int i = 0; i < 5; ++i) {
-			JButton dice = new JButton("dice" + i);
-			dice.setSize(100, 100);
-			dice.addMouseListener(new RightClickShowPopup(popup, dice));
-
-			dice_panel.add(dice);
+			dices.add(new Dice());
+			dice_panel.add(dices.get(i));
 		}
-		
 		dice_panel.addMouseListener(new RightClickShowPopup(popup, dice_panel));
+		dice_panel.setBackground(Color.black);
 
 		JButton reroll_btn = new JButton("다시 굴리기");
+		reroll_btn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				while (true) {
+
+					for (Dice dice : dices) {
+						dice.roll();
+						dice_panel.repaint();
+					}
+
+					ArrayList<Integer> counts = new ArrayList<Integer>();
+					counts.add(0);
+					counts.add(0);
+					counts.add(0);
+					counts.add(0);
+					counts.add(0);
+
+					for (int i = 0; i < 5; ++i) {
+						int num = dices.get(i).num;
+						System.out.println("주사위" + i + ": " + dices.get(i).num);
+						counts.set(num, counts.get(num) + 1);
+					}
+					if (counts.contains(5)) {
+						break;
+					}
+				}
+			}
+		});
+
+		setJMenuBar(bar);
+		bar.add(menu);
+
+		popup.add(popup_item_reroll);
+		menu.add(popup_item_reroll);
 
 		add(dice_panel, BorderLayout.CENTER);
 		add(reroll_btn, BorderLayout.SOUTH);
 
-//		addComponentListener(new ComponentAdapter() {
-//			@Override
-//			public void componentResized(ComponentEvent e) {
-//				System.out.println("현재 가로너비 : " + f.getWidth());
-//				System.out.println("현재 세로너비 : " + f.getHeight());
-//			}
-//		});
-
-		popup.add(popup_item_reroll);
-		menu.add(popup_item_reroll);// 위치 중요
-
-		bar.add(menu);
-		setJMenuBar(bar);
-
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setLocation(300, 100);
-		setSize(500, 180);
+		setLocation(400, 100);
+		setSize(500, 200);
 		setVisible(true);
-
 	}
 
+//addComponentListener(new ComponentAdapter() {
+//@Override
+//public void componentResized(ComponentEvent e) {
+//	System.out.println("현재 가로너비 : " + f.getWidth());
+//	System.out.println("현재 세로너비 : " + f.getHeight());
+//}
+//});
 //	final static String[] paths = { "F:\\자바SW개발자 양성과정 10월 송만기\\git\\java_class\\assets\\dice\\00.jpg",
 //			"F:\\자바SW개발자 양성과정 10월 송만기\\git\\java_class\\assets\\dice\\01.jpg",
 //			"F:\\자바SW개발자 양성과정 10월 송만기\\git\\java_class\\assets\\dice\\02.jpg",
@@ -124,7 +151,6 @@ public class S08_PopupMenuQuiz extends JFrame {
 //
 //			@Override
 //			public void actionPerformed(ActionEvent e) {
-//				Collections.shuffle(images);
 //				label01.setIcon(images.get(++temp % images.size()));
 //				label02.setIcon(images.get(++temp % images.size()));
 //				label03.setIcon(images.get(++temp % images.size()));
