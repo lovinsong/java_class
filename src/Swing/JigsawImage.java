@@ -12,9 +12,9 @@ public class JigsawImage {
 			
 		//Provide number of rows and column
 		int row = 2;
-		int col = 6;
+		int col = 3;
 		
-		BufferedImage originalImgage = ImageIO.read(new File("F:\\자바SW개발자 양성과정 10월 송만기\\JAVA\\1fby-6t-555d.png"));
+		BufferedImage originalImgage = ImageIO.read(new File("F:\\자바SW개발자 양성과정 10월 송만기\\git\\java_class\\assets\\dice\\주사위.jpg"));
 		
 		//total width and total height of an image
 		int tWidth = originalImgage.getWidth();
@@ -36,7 +36,7 @@ public class JigsawImage {
 					System.out.println("creating piece: "+i+" "+j);
 					
 					BufferedImage SubImgage = originalImgage.getSubimage(y, x, eWidth, eHeight);
-					File outputfile = new File("F:\\자바SW개발자 양성과정 10월 송만기\\git\\java_class\\assets\\"+i+j+".png");
+					File outputfile = new File("F:\\자바SW개발자 양성과정 10월 송만기\\git\\java_class\\assets\\dice\\"+i+j+".jpg");
 					ImageIO.write(SubImgage, "png", outputfile);
 					
 					y += eWidth;

@@ -43,7 +43,7 @@ public class S03_JLabel extends JFrame {
 
 	int curr_image = 0;
 
-	public S03_JLabel() throws IOException {
+	public S03_JLabel() {
 		// JLabel : 텍스트, 그림등을 적을 수 있는 컴포넌트
 //		JLabel label01 = new JLabel("Hello, java gui!!!!!!!!");
 		JLabel label02 = new JLabel(images.get(curr_image));

@@ -28,15 +28,15 @@ public class mine extends JFrame{
 //	}
 	
 		ArrayList<JButton> btns;
-		final static int image_cols = 1;
-		final static int image_rows = 566;
+		final static int image_cols = 3;
+		final static int image_rows = 2;
 
 		public mine() {
 			btns = new ArrayList<>(image_cols * image_rows);
 
 			try {
 				BufferedImage source = ImageIO
-						.read(new File("F:\\자바SW개발자 양성과정 10월 송만기\\git\\java_class\\assets\\mine.png"));
+						.read(new File("F:\\자바SW개발자 양성과정 10월 송만기\\git\\java_class\\assets\\dice\\주사위.jpg"));
 
 				int btn_width = source.getWidth() / image_cols;
 				int btn_height = source.getHeight() / image_rows;
