@@ -61,13 +61,11 @@ public class A00_Hello{
 		System.out.println("Banana"); 
 		System.out.println("Pineapple"); 
 		
-		System.out.println("┌─────────────────────┐");
 		System.out.println("│ ☆★☆★☆★☆★☆★│");
 		System.out.println("│ ☆1.시작하기 	    ★│");
 		System.out.println("│ ☆2.이어하기	    ★│");
 		System.out.println("│ ☆3.끝내기	    ★│");
 		System.out.println("│ ☆★☆★☆★☆★☆★│");
-		System.out.println("└─────────────────────┘");
 		
 		// # 자바의 데이터들
 		
