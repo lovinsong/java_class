@@ -9,23 +9,23 @@ public class E09_Client {
 
 	public static void main(String[] args) {
 
-		// E08¿¡ Á¢¼ÓÇÏ´Â ÇÁ·Î±×·¥
+		// E08ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½
 
 		try {
 			
 			for (int i = 0; i < 999900; i++) {
 				
 			Socket s = new Socket("localhost", 3455);
-			System.out.println("¿¬°á¿¡ ¼º°øÇß½À´Ï´Ù.");
+			System.out.println("ï¿½ï¿½ï¿½á¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
 
 			PrintWriter out = new PrintWriter(new OutputStreamWriter(s.getOutputStream()));
 
-			System.out.println("Enter¸¦ ´©¸£¸é ¼­¹ö·Î ¸Þ¼¼Áö¸¦ Àü¼ÛÇÕ´Ï´Ù.");
+			System.out.println("Enterï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.");
 			out.println("[Client] Hello!");				
-			out.close();
+			out.close();`
 			s.close();
 			}
-			System.out.println("¸Þ¼¼Áö¸¦ ¼º°øÀûÀ¸·Î Àü¼ÛÇß½À´Ï´Ù.");
+			System.out.println("ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
 
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
